@@ -1,0 +1,164 @@
+// button topbar
+@mixin button-topbar ($width, $height) {
+  display: inline-block;
+  padding: 0 12px;
+  font-size: 12px;
+  width: $width;
+  height: $height;
+  line-height: $height - 2;
+  color: $txt-menu;
+  box-sizing: border-box;
+  background: red;
+  border: $border-menu;
+  border-radius: 2px;
+  background: transparent;
+}
+
+// item topbar
+@mixin item-topbar {
+  position: relative;
+  display: inline-block;
+  margin-top: 12px;
+  height: 24px;
+  line-height: 22px;
+  padding: 0 3px;
+  color: $txt-menu;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+@mixin item-topbar-border {
+  &:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: -3px;
+    height: 16px;
+    width: 0;
+    display: block;
+    border-right: 1px solid #2B2B2B;
+  }
+}
+// item leftbar
+@mixin item-leftbar {
+  height: 100px;
+  padding-top: 25px;
+  opacity: .6;
+  text-align: center;
+  color: #fff;
+  box-sizing: border-box;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// link.scss
+// @mixin link-span {
+//   color: $link-color;
+//   @content;
+//   &:hover {
+//     color: $link-hover-color;
+//     text-decoration: $link-hover-decoration;
+//   }
+// }
+// @mixin link-a {
+//   color: $link-color;
+//   @content;
+//   &:hover {
+//     color: $link-hover-color;
+//     text-decoration: underline;
+//   }
+// }
+
+// mini checkbox
+@mixin mini-checkbox {
+  width: 12px;
+  height: 12px;
+  border: $border-menu;
+  border-radius: 2px;
+  background: #424242;
+  &:after {
+    height: 6px !important;
+    width: 2px !important;
+  }
+}
+@mixin mini-checkbox-label {
+  padding-left: 7px;
+  font-size: 12px;
+  color: $txt-menu;
+}
+
+// icons
+@mixin icons-item {
+  position: relative;
+  float: left;
+  margin: 0 9px 0;
+  width: 48px;
+  height: 110px;
+  .icon {
+    position: absolute;
+    top: -6px;
+    font-size: 16px;
+    right: -6px;
+    color: red;
+    cursor: pointer;
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+@mixin icons-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+}
+@mixin icons-txt {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+@mixin icons-layer {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+  color: $white;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 4px;
+  /deep/ .icon {
+    position: absolute;
+    top: -6px;
+    font-size: 16px;
+    right: -6px;
+    color: red;
+    cursor: pointer;
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+// scrollbar
+@mixin scrollbar( $width: 6px, $colorBar: $white, $colorTrack: #D8D8D8, $colorThumb: #838383, $radius: 3px) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+    background-color: $colorBar;
+    border-radius: $radius;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: $radius;
+    background-color: $colorTrack;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $radius;
+    background-color: $colorThumb;
+  }
+}

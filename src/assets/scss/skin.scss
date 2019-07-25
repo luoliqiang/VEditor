@@ -1,0 +1,53 @@
+.skin-1 {
+  .title {
+    background: rgba(0,0,0,0.3);
+  }
+}
+.skin-2 {
+  .icon-item {
+    margin: 0 auto !important;
+    float: none !important;
+  }
+  .title {
+    background: rgba(0,0,0,0.3);
+  }
+}
+.skin-4 {
+  .title {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0, .3) 100%);
+  }
+}
+.skin-7,
+.skin-8,
+.skin-6,
+.skin-5 {
+  .icons-list-wrap {
+    overflow-y: hidden !important;
+  }
+  .icons-list {
+    float: left;
+  }
+}
+.skin-8 {
+  background: transparent !important;
+}
+// .skin-8 {
+//   .icon-item {
+//     &:after {
+//       content: '';
+//       position: absolute;
+//       z-index: -1;
+//       top: -12px;
+//       left: 0;
+//       display: block;
+//       width: 90%;
+//       height: 80%;
+//       margin: 5%;
+//       border-radius: 6px 6px 0 0;
+//       background-image: linear-gradient(0deg, rgba(60,60,62,0.00) 0%, rgba(0,0,0,0.53) 100%);
+//     }
+//   }
+// }
+// .skin-9 {
+//   background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.44) 98%) !important;
+// }

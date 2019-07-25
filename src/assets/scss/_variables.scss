@@ -1,0 +1,28 @@
+// Variables
+$imgPath: '../../assets/images/';
+$imgPathTopbar: '../../../assets/images/';
+$imgPathLeftbar: '../../../assets/images/';
+// z-index
+$zIndexTopbar:    100;
+$zIndexDialog:    200;
+// color
+$white:          #fff !default;
+$black:          #000 !default;
+$warn:           #EE6723 !default;
+// txt color
+$txt:            #424242 !default;
+$txt-menu:       #C2C2C2 !default
+$txt-menu-hover: $white !default
+// bg structure
+$bg-topbar:      rgba(3,3,4,0.9) !default
+$bg-leftbar:     rgba(3,3,4,0.86) !default
+$bg-center:      #3e3b3b !default
+// tobar menu border
+$border:    1px solid #D8D8D8 !default
+$border-menu:    1px solid #3E3E3E !default
+// link
+// Style anchor elements.
+$link-color:                  #0076FF !default;
+// $link-decoration:             none !default;
+// $link-hover-color:            #0076FF !default;
+// $link-hover-decoration:       underline !default;

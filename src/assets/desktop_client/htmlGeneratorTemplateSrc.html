@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>自定义桌面</title>
+    <script>
+    var INIT_DATA = '___INIT_DATA___';
+    </script>
+    
+</head>
+<body>
+<div id="js-template" class="view-port" >
+  <div v-on:mouseup="mouseDesktop($event)" class="view-port-except-menu">
+    <div class="block"
+        v-cloak
+        v-for="(blockItem, key) in blocks"
+        :key="key"
+        v-bind:class="blockItem.skinClass"
+        :style="{width:blockItem.width + 'px', height:blockItem.height  + 'px', left:blockItem.left  + 'px',top: blockItem.top  + 'px', zIndex:blockItem.zIndex}"
+        > 
+      <div class="title"
+          v-if="skinTypeNoTitle.indexOf(Number(blockItem.skin)) < 0"
+          v-html="blockItem.title === '双击设置标题' ? '' : blockItem.title"
+          >
+      </div>
+      <div class="content"
+          v-bind:style="{width: (Number(blockItem.listWidth) + 6) + 'px', height:(Number(blockItem.height) -(skinTypeNoTitle.indexOf(Number(blockItem.skin)) < 0 ? 50 : 10)) + 'px', overflowY: skinTypeSlide.indexOf(Number(blockItem.skin)) >= 0 ? 'hidden' :'auto'}"
+          >
+          <div v-if="skinTypeSlide.indexOf(Number(blockItem.skin)) >= 0" class="slider-wp" :style="blockItem.listStyle">
+            <div class="no-wrap-wp" v-bind:style="{width: blockItem.pageCounts * blockItem.listWidth + 'px', marginLeft: -blockItem.listWidth * (blockItem.currentPageNo - 1) + 'px'}">
+              <ul v-cloak v-for="(page, j) in blockItem.pageData" :key="j" class="icons-list" v-bind:style="{width: blockItem.listWidth + 'px'}">
+                <li 
+                v-for="(item,__index) in page" 
+                        v-bind:data-id="item.id" 
+                        v-bind:style="{width: blockItem.liWidth + 'px', height:(Number(blockItem.iconSize) + 35 + 16) + 'px'}"
+                        v-bind:class="{firstRow: __index < blockItem.rowNum}" 
+                >
+                <div
+                  v-bind:class="{focus: item.iconId === currentSelected}" 
+                  v-bind:title="item.text"
+                  v-bind:style="{width: (Number(blockItem.iconSize) + 22) + 'px'}"
+                  v-on:mousedown="selectApp(item)"
+                  v-on:dblclick="startApp(item)"
+                  v-on:mouseup="mouseApp(item.iconId, $event)"
+                >
+                    <img :src="item.img" v-bind:style="{width:blockItem.iconSize + 'px', height:blockItem.iconSize + 'px'}">
+                    <span class="name">{{ item.text }}</span></div>
+                </li>
+            </ul>
+          </div>
+          <div class="dots">
+            <i v-if="blockItem.pageCounts > 1" v-for="n in blockItem.pageCounts"  v-bind:class="{ active: blockItem.currentPageNo === n }" v-on:click="blockItem.currentPageNo = n" ></i>
+          </div>
+          </div>
+          <div v-else class="v-scroll">
+            <ul v-cloak class="clearfix">
+              <li 
+                v-for="(item,__index) in blockItem.vScrollData" 
+                v-bind:id="'js-ico-' + item.id" 
+                v-bind:data-id="item.id" 
+                v-bind:class="{firstRow: __index < blockItem.rowNum}" 
+                v-bind:style="{width: blockItem.liWidth + 'px', height:(Number(blockItem.iconSize) + 35 + 16) + 'px'}"
+              >
+              <div 
+                v-bind:class="{focus: item.iconId === currentSelected}" 
+                v-bind:title="item.text"
+                v-bind:style="{width: (Number(blockItem.iconSize) + 22) + 'px'}"
+                v-on:mousedown="selectApp(item)"
+                v-on:dblclick="startApp(item)"
+                v-on:mouseup="mouseApp(item.iconId, $event)"
+              >
+              <img :src="item.img" v-bind:style="{width:blockItem.iconSize + 'px', height:blockItem.iconSize + 'px'}">
+                  <span class="name" v-show="!(item.id === currentRename)">{{ item.text }}</span>
+                  <textarea 
+                            v-if="blockItem.name === 'module-downloadArea'"
+                            v-show="item.id === currentRename"
+                            v-model.trim="item.text" 
+                            debounce="100" 
+                            v-on:change="renameItem(item.id, item.text)"
+                            v-on:keydown.enter.stop.prevent="renameEnterItem($event, item.id);"
+                        >
+                  </textarea>
+
+                  </div>
+              </li>
+          </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="m-menu" v-bind:class="{ show: menu.show }" v-bind:style="menu.style" v-cloak>
+          <ul>
+              <li v-for="item in menu.list" 
+                      v-bind:id="'menu_' + item.id" 
+                      v-on:click.stop.prevent="selectMenuItem(item.menu_id)"
+              >
+                  <span>{{ item.name }}</span><span>{{ item.key }}</span>
+              </li>
+          </ul>
+  </div>
+</div>
+
+
+<script src="https://style.wxdesk.com/assets/lib/qdd-desktop/vue.js"></script>
+<script src="https://style.wxdesk.com/assets/lib/qdd-desktop/zepto.min.js"></script>
+<script src="https://style.wxdesk.com/assets/lib/qdd-desktop/shortcut.js?"></script>
+<script src="https://style.wxdesk.com/assets/lib/qdd-desktop/underscore-min.js"></script>
+
+</body>
+</html>
