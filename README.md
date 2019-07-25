@@ -2,6 +2,7 @@
 
 > a content editor based on vue and element ui.
 基于vue和element ui的富内容编辑器，类似于PS，提供核心的编辑功能，用户可自行进行功能扩展
+![GitHub](demo.png)
 ## feature
 * editor can set resolving, fullscreen, save (编辑区可调整分辨率，全屏，保存)
 * support history steps (操作步骤支持历史记录)
@@ -14,7 +15,6 @@ notice: whenever you want a history record ,you need use the history api to reco
 ``` js
  store.history.update()
 ```
-![GitHub](demo.png)
 ## Build Setup
 
 ``` bash
