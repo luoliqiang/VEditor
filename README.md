@@ -14,6 +14,7 @@ notice: whenever you want a history record ,you need use the history api to reco
 ``` js
  store.history.update()
 ```
+![GitHub](demo.png)
 ## Build Setup
 
 ``` bash
