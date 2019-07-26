@@ -3,7 +3,7 @@
 > a content editor based on vue and element ui.
 基于vue和element ui的富内容编辑器，类似于PS，提供核心的编辑功能，用户可自行进行功能扩展
 
-<a href="http://47.99.218.109/VEditor/">demo 地址</a>
+<a target="_blank" href="http://47.99.218.109/VEditor/">demo 地址</a>
 
 ![GitHub](demo.png)
 ## feature
